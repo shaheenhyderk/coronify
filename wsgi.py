@@ -1,0 +1,1 @@
+from coronify import app
