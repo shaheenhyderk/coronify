@@ -11038,13 +11038,13 @@ form.user .btn-user {
 }
 
 footer.sticky-footer {
-  padding: 2rem 0;
+  padding: 1rem 0;
   flex-shrink: 0;
 }
 
 footer.sticky-footer .copyright {
   line-height: 1;
-  font-size: 0.8rem;
+  font-size: .8rem;
 }
 
 body.sidebar-toggled footer.sticky-footer {

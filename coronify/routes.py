@@ -38,7 +38,15 @@ def home():
     statesdict={'TT':'India', 'AN': 'Andaman and Nicobar Islands', 'AP': 'Andhra Pradesh', 'AR': 'Arunachal Pradesh', 'AS': 'Assam', 'BR': 'Bihar', 'CH': 'Chandigarh', 'CT': 'Chhattisgarh', 'DL': 'Delhi', 'DN': 'Dadra and Nagar Haveli and Daman and Diu', 'GA': 'Goa', 'GJ': 'Gujarat', 'HP': 'Himachal Pradesh', 'HR': 'Haryana', 'JH': 'Jharkhand', 'JK': 'Jammu and Kashmir', 'KA': 'Karnataka', 'KL': 'Kerala', 'LA': 'Ladakh', 'MH': 'Maharashtra', 'ML': 'Meghalaya', 'MN': 'Manipur', 'MP': 'Madhya Pradesh', 'MZ': 'Mizoram', 'NL': 'Nagaland', 'OR': 'Odisha', 'PB': 'Punjab', 'PY': 'Puducherry', 'RJ': 'Rajasthan', 'SK': 'Sikkim', 'TG': 'Telangana', 'TN': 'Tamil Nadu', 'TR': 'Tripura', 'UP': 'Uttar Pradesh', 'UT': 'Uttarakhand', 'WB': 'West Bengal'}
 
     total_india = data[dates[-1]]['TT']['total']['confirmed']
+    total_pop_india = data[dates[-1]]['TT']['meta']['population']
+    total_percentage_india = total_india*100/total_pop_india
+    total_percentage_india = round(total_percentage_india,3)
+
     total_state = data[dates[-1]][session['state']]['total']['confirmed']
+    total_pop_state = data[dates[-1]][session['state']]['meta']['population']
+    total_percentage_state = total_state*100/total_pop_state
+    total_percentage_state = round(total_percentage_state,3)
+
     today_india = data[dates[-1]]['TT']['delta']['confirmed']
     today_state = data[dates[-1]][session['state']]['delta']['confirmed']
 
@@ -87,8 +95,15 @@ def home():
             except:
                 pass
         delta_dist.sort(key = lambda x: x[1],reverse=True)
+
+    total_india = "{:,}".format(total_india)
+    total_state = "{:,}".format(total_state)
+    total_pop_india = "{:,}".format(total_pop_india)
+    total_pop_state = "{:,}".format(total_pop_state)
+    today_india = "{:,}".format(today_india)
+    today_state = "{:,}".format(today_state)
     
-    return render_template('index.html', form=form, state=statesdict[session['state']], total_india=total_india, total_state=total_state, today_india=today_india, today_state=today_state, dates=dates, cases=cases, total_dist=total_dist, delta_dist=delta_dist, last_updated=dates[-1])
+    return render_template('index.html', form=form, state=statesdict[session['state']], total_india=total_india, total_state=total_state, total_pop_india=total_pop_india, total_pop_state=total_pop_state, total_percentage_india=total_percentage_india, total_percentage_state=total_percentage_state, today_india=today_india, today_state=today_state, dates=dates, cases=cases, total_dist=total_dist, delta_dist=delta_dist, last_updated=dates[-1])
 
 class Selform(FlaskForm):
     sel_state = SelectField('sel_state', choices=[('TT','India'),('AN', 'Andaman and Nicobar Islands'), ('AP', 'Andhra Pradesh'), ('AR', 'Arunachal Pradesh'), ('AS', 'Assam'), ('BR', 'Bihar'), ('CH', 'Chandigarh'), ('CT', 'Chhattisgarh'), ('DL', 'Delhi'), ('DN', 'Dadra and Nagar Haveli and Daman and Diu'), ('GA', 'Goa'), ('GJ', 'Gujarat'), ('HP', 'Himachal Pradesh'), ('HR', 'Haryana'), ('JH', 'Jharkhand'), ('JK', 'Jammu and Kashmir'), ('KA', 'Karnataka'), ('KL', 'Kerala'), ('LA', 'Ladakh'), ('MH', 'Maharashtra'), ('ML', 'Meghalaya'), ('MN', 'Manipur'), ('MP', 'Madhya Pradesh'), ('MZ', 'Mizoram'), ('NL', 'Nagaland'), ('OR', 'Odisha'), ('PB', 'Punjab'), ('PY', 'Puducherry'), ('RJ', 'Rajasthan'), ('SK', 'Sikkim'), ('TG', 'Telangana'), ('TN', 'Tamil Nadu'), ('TR', 'Tripura'), ('UP', 'Uttar Pradesh'), ('UT', 'Uttarakhand'), ('WB', 'West Bengal')])

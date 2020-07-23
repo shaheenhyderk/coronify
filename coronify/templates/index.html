@@ -63,9 +63,9 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+          <div class=" align-items-center justify-content-between mb-4">
             <h1 class="h3 font-weight-bold mb-0 text-gray-800">Coronify Dashboard</h1>
-            <div class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-calendar fa-sm text-white-50"></i> {{last_updated}} </div>
+            <h6 class=" btn btn-sm btn-primary shadow-sm mt-2 ml-1"><i class="fas fa-calendar fa-sm text-white-50"></i> {{last_updated}} </h6>
           </div>
 
           <!-- Content Row -->
@@ -78,6 +78,7 @@
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Cases In India</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">{{total_india}}</div>
+                      <span> {{total_percentage_india}}% of population {{total_pop_india}}</span>
                     </div>
                   </div>
                 </div>
@@ -105,6 +106,7 @@
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Cases In {{state}}</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">{{total_state}}</div>
+                      <span> {{total_percentage_state}}% of population {{total_pop_state}}</span>
                     </div>
                   </div>
                 </div>
@@ -314,9 +316,12 @@
 
       <!-- Footer -->
       <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Coronify 2020 Developed By Shaheen Hyder</span>
+        <div class="container">
+          <div class="copyright text-center">
+            <span>Copyright &copy; Coronify 2020.</span>
+            <br>
+            <br>
+            <span> Developed By Shaheen Hyder</span>
           </div>
         </div>
       </footer>
