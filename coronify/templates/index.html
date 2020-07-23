@@ -38,18 +38,18 @@
           <!-- Topbar Search -->
           <form class="form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="post">
             <div class="input-group">
-              {% if form.state.errors %}
-                  {{ form.state(placeholder='Search for...', class='form-control bg-light border-0 small is-invalid') }}
+              {% if form.sel_state.errors %}
+                  {{ form.sel_state(placeholder='Search for...', class='form-control bg-light border-0 small is-invalid') }}
                   <div class="invalid-feedback">
-                      {% for error in form.state.errors %}
+                      {% for error in form.sel_state.errors %}
                           <span>{{error}}</span>
                       {% endfor %}
                   </div>
               {% else %}
-                  {{ form.state(placeholder='Search for...', class='form-control bg-light border-0 small') }}
+                  {{ form.sel_state(placeholder='Search for...', class='form-control bg-light border-0 small') }}
               {% endif %}
               <div class="input-group-append">
-                <button class="btn btn-primary" type="submit" name="button" value="ss">
+                <button id="search_but" class="btn btn-primary" type="submit" name="button" value="ss">
                   <i class="fas fa-search fa-sm"></i>
                 </button>
               </div>
@@ -64,7 +64,8 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Coronify Dashboard</h1>
+            <h1 class="h3 font-weight-bold mb-0 text-gray-800">Coronify Dashboard</h1>
+            <div class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-calendar fa-sm text-white-50"></i> {{last_updated}} </div>
           </div>
 
           <!-- Content Row -->
@@ -97,6 +98,7 @@
             </div>
 
             <div class="col-xl-3 col-md-6 mb-4">
+              {% if not state == 'India' %}
               <div class="card border-left-info shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -107,9 +109,11 @@
                   </div>
                 </div>
               </div>
+              {% endif %}
             </div>
 
             <div class="col-xl-3 col-md-6 mb-4">
+              {% if not state == 'India' %}
               <div class="card border-left-danger shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -120,6 +124,7 @@
                   </div>
                 </div>
               </div>
+              {% endif %}
             </div>
           </div>
 
@@ -164,7 +169,7 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                  <div class="chart-pie" style="height: 70vh;">
+                  <div class="chart-pie" style="height: 80vh;">
                     <canvas id="myPieChart"></canvas>
                   </div>
                 </div>
@@ -311,7 +316,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Corona 2020</span>
+            <span>Copyright &copy; Coronify 2020 Developed By Shaheen Hyder</span>
           </div>
         </div>
       </footer>
@@ -365,6 +370,11 @@
            "{{ item[1] }}",
           {% endfor %}
   ]
+
+  let state_select = document.getElementById('sel_state');
+  state_select.onchange = function(){
+    document.getElementById("search_but").click();
+  }
 
   </script>
   <script src="{{ url_for('static', filename='js/demo/' + 'chart-area-demo.js') }}"></script>
