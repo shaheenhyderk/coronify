@@ -71,63 +71,90 @@
           <!-- Content Row -->
           <div class="row">
 
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-primary shadow h-100 py-2">
+            <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
+              <div class="card border-left-primary shadow h-100 py-1">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Cases In India</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{total_india}}</div>
-                      <span> {{total_percentage_india}}% of population {{total_pop_india}}</span>
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Cases In {{state}}</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{total_state}}</div>
+                      {% if total_tested %}
+                      <h6 style="font-size: 12px; font-weight: 800;">Out Of {{total_tested}} Tested</h6>
+                      {% endif %}
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="col-xl-3 col-md-6 mb-4">
+            <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
+              <div class="card border-left-primary shadow h-100 py-1">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Today's Cases In {{state}}</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{today_state}}</div>
+                      {% if today_tested %}
+                      <h6 style="font-size: 12px; font-weight: 800;">Out Of {{today_tested}} Tested</h6>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
               <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Today's Cases In India</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{today_india}}</div>
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total Recovered In {{state}}</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{total_recovered}}</div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="col-xl-3 col-md-6 mb-4">
-              {% if not state == 'India' %}
-              <div class="card border-left-info shadow h-100 py-2">
+            <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
+              <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Cases In {{state}}</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{total_state}}</div>
-                      <span> {{total_percentage_state}}% of population {{total_pop_state}}</span>
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Today's Recovered In {{state}}</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{today_recovered}}</div>
                     </div>
                   </div>
                 </div>
               </div>
-              {% endif %}
             </div>
 
-            <div class="col-xl-3 col-md-6 mb-4">
-              {% if not state == 'India' %}
+            <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
               <div class="card border-left-danger shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Today's Cases In {{state}}</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{today_state}}</div>
+                      <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Total Deaths In {{state}}</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{total_death}}</div>
                     </div>
                   </div>
                 </div>
               </div>
-              {% endif %}
             </div>
+
+            <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-4">
+              <div class="card border-left-danger shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Today's Deaths In {{state}}</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">{{today_death}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
 
           <!-- Content Row -->
